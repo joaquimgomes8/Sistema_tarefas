@@ -19,26 +19,23 @@ def Mostrar_lista():
 
 #======================LISTA====================================
 
-# backend.py
 from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
-lista = [] # Variável global onde as tarefas serão guardadas
+lista = []
 
 @app.route('/')
 def index():
-    # Envia a lista para o index.html exibir as tarefas
     return render_template('index.html', tarefas=lista)
 
 @app.route('/adicionar', methods=['POST'])
 def adicionar():
-    # Captura o texto do input pelo atributo name="tarefa_digitada" do HTML
     nova_tarefa = request.form.get('tarefa_digitada') 
     
     if nova_tarefa:
-        lista.append(nova_tarefa) # Adiciona à lista
+        lista.append(nova_tarefa)
         
-    return redirect('/') # Redireciona de volta para a página inicial
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -62,5 +59,3 @@ while verdadeiro == 1:
     else:
         os.system('cls')
         print("Opcao nao reconhecida!")
-
-
